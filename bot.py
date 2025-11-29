@@ -87,9 +87,10 @@ async def daily_screenshot_task():
 
 @daily_screenshot_task.before_loop
 async def before_daily_screenshot_task():
-    """Aspetta che il bot sia pronto e si sincronizza con l'orario (Europe/Rome)."""
+    """VERSIONE DI TEST: aspetta solo 2 minuti e poi parte il task."""
     await bot.wait_until_ready()
-    print("Bot pronto, mi sincronizzo con l'orario desiderato...")
+    print("Modalità TEST: aspetto 2 minuti e poi invio lo screenshot...")
+    await asyncio.sleep(120)  # 120 secondi = 2 minuti
 
     rome_tz = ZoneInfo("Europe/Rome")
     now_rome = datetime.datetime.now(rome_tz)
